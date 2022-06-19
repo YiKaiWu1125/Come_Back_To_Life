@@ -47,6 +47,7 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
     private lateinit var my_uid: String
     private lateinit var isinit: String
     private lateinit var btn_sos: Button
+    private lateinit var btn_pic: Button
     lateinit var locmgr: LocationManager
     var nowloc_latitude : String? = null
     var nowloc_longitude : String? = null
@@ -56,6 +57,9 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
     var bo : Int? = 0
     private var limit = 30.0
     var myname : String = "我"
+    companion object {
+        val NUMBER: String = "NUMBER"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,6 +168,14 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
                 mDbRef.child("chats").child("messages").push()
                     .setValue(messageObj)
             }
+        }
+        btn_pic = findViewById(R.id.btn_pic)
+        btn_pic.setOnClickListener {
+            val intent = Intent()
+            val str_u: String = "hi"
+            intent.putExtra(NUMBER,  str_u)
+            intent.setClass(this, PicprintActivity::class.java)
+            startActivity(intent)
         }
     }
     override fun onRequestPermissionsResult(
