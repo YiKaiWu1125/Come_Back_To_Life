@@ -59,7 +59,9 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
     var myname : String = "我"
     companion object {
         val NUMBER: String = "NUMBER"
+        val TIMES: String = "TIMES"
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +89,7 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
             initLoc()
         }
 
+
         // val userName = intent.getStringExtra("userName")
         val senderUid = FirebaseAuth.getInstance().currentUser!!.uid
         my_uid = senderUid
@@ -95,6 +98,16 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
         messageList = ArrayList()
         mDbRef = FirebaseDatabase.getInstance("https://come-back-to-life-default-rtdb.asia-southeast1.firebasedatabase.app").getReference()
 //        Toast.makeText(this, mDbRef.key, Toast.LENGTH_SHORT).show()
+
+
+
+        val numberval :Int  = intent.getIntExtra(
+            ChoicepicActivity.NUMBER ,-1)
+        if(numberval != -1){
+            val messageObj = Message(numberval.toString(), senderUid,gettime()+"_電源:"+getBatteryLevel().toString()+"%","","pic")
+            mDbRef.child("chats").child("messages").push()
+                .setValue(messageObj)
+        }
 
         mDbRef.child("chats").child("messages").orderByKey().limitToLast(30).addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -114,7 +127,43 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
 
                 //toast message
                 updateMsgUI()
-                if (messageList[messageList.size-1].senderId != my_uid && messageList[messageList.size - 1].message!="" && isinit != "1"&& getBatteryLevel() < limit) {
+                val rtime :String?  = intent.getStringExtra(
+                    PicprintActivity.TIMES)
+                if(messageList[messageList.size - 1].longitude=="pic" && rtime != messageList[messageList.size - 1].time){
+                    if(messageList[messageList.size-1].senderId != my_uid){
+                        //******debug------------------------
+                        /*Toast.makeText(
+                            baseContext,"rtime:\n"+
+                            if(rtime==null){
+                                           "null"
+                                           }else{
+                                rtime
+                                                },
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Toast.makeText(
+                            baseContext,"messageList:\n"+
+                            if(messageList[messageList.size - 1].time==null){
+                                                                            "null"
+                                                                            }else{
+                                messageList[messageList.size - 1].time
+                                                                                 },
+                            Toast.LENGTH_SHORT
+                        ).show()*/
+                        //******debug------------------------
+                        val intent = Intent()
+                        intent.setClass(baseContext, PicprintActivity::class.java)
+                        var str : String= if(messageList[messageList.size - 1].message==null){
+                            "0"
+                        } else{
+                            messageList[messageList.size - 1].message
+                        }
+                        intent.putExtra(NUMBER, str.toInt())
+                        intent.putExtra(TIMES, messageList[messageList.size - 1].time)
+                        startActivity(intent)
+                    }
+                }
+                if (messageList[messageList.size-1].senderId != my_uid && messageList[messageList.size - 1].message!="" && isinit != "1"&& getBatteryLevel() < limit &&messageList[messageList.size - 1].longitude!="pic") {
                     if (messageList[messageList.size - 1].latitude == null) {
                         Toast.makeText(
                             baseContext,
@@ -172,9 +221,9 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
         btn_pic = findViewById(R.id.btn_pic)
         btn_pic.setOnClickListener {
             val intent = Intent()
-            val str_u: String = "hi"
-            intent.putExtra(NUMBER,  str_u)
-            intent.setClass(this, PicprintActivity::class.java)
+            //val str_u: String = "hi"
+            //intent.putExtra(NUMBER,  str_u)
+            intent.setClass(this, ChoicepicActivity::class.java)
             startActivity(intent)
         }
     }
@@ -283,6 +332,17 @@ class ChatroomActivity : AppCompatActivity(), LocationListener {
         }
         var k = 1
         for(msg in messageList.reversed()) {
+            if(msg.longitude=="pic") {
+                var senderIdSlice: String
+                senderIdSlice = if (msg.senderId == my_uid) {
+                    myname
+                } else {
+                    //msg.senderId.toString().substring(0,3)
+                    "匿名"
+                }
+                tv_bf_msg.append(senderIdSlice + ": " + "傳送了一張貼圖" + "\n" + msg.time + "\n\n")
+                continue
+            }
             if (msg.latitude == null )  {
                 var senderIdSlice: String
                 senderIdSlice = if (msg.senderId == my_uid) {
