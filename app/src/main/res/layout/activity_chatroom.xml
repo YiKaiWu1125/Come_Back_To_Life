@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="使用者:"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/user_id"
+            android:layout_width="50dp"
+            android:layout_height="40sp"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/btn_SOS"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+
+            android:text=""
+            android:textSize="25sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="內容"
+            android:textSize="25sp" />
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"/>
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="傳送"
+            android:textSize="25sp" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_height="630dp"
+        android:layout_width="fill_parent">
+        <TextView
+            android:id="@+id/bf_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            />
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852170384100",
+    "firebase_url": "https://come-back-to-life-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "come-back-to-life",
+    "storage_bucket": "come-back-to-life.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852170384100:android:dbe65135ab8c4a65c9c2f1",
+        "android_client_info": {
+          "package_name": "com.deathhorizon.comebacktolife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852170384100-767nb18f01g4mem43ri8oe294ah0as8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAEmryqPT2j12RFfk_FrcLgsJsegUTy4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852170384100-767nb18f01g4mem43ri8oe294ah0as8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
