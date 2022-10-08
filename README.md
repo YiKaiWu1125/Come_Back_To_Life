@@ -8,7 +8,7 @@
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/xQtutGdYuM8/0.jpg)](https://www.youtube.com/watch?v=xQtutGdYuM8 "come back to life")
 
-## Requirements
+## 設備需求
 
 + Android  phone (Android 10含 以後的版本) 
 
