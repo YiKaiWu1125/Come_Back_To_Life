@@ -4,48 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80B4E6E6"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/come_back_to_life_logo"/>
+
 
     <TextView
         android:id="@+id/Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="只有電量低於30才可以進入的聊天室"
-        app:layout_constraintBottom_toTopOf="@+id/enter_chatroom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/input_username"
-        android:layout_width="220dp"
+        android:layout_width="331dp"
         android:layout_height="39dp"
-        android:gravity="center"
+        android:text="電量低於30才可進入的聊天室"
+        android:textColor="#0D47A1"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/enter_chatroom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939" />
 
     <Button
         android:id="@+id/enter_chatroom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="292dp"
+        android:layout_width="120dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="148dp"
+        android:background="@drawable/button_shape"
         android:text="進入"
+        android:textColor="#FFE0B2"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="請輸入名稱:"
-        app:layout_constraintBottom_toTopOf="@+id/input_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

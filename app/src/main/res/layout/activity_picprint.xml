@@ -11,22 +11,22 @@
         android:id="@+id/view_pic_print"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="120dp"
-        tools:srcCompat="@drawable/morning"
-        app:layout_constraintHorizontal_bias="0.0"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="140dp"
+        tools:srcCompat="@drawable/morning" />
 
     <Button
         android:id="@+id/btn_come_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/button_shape"
         android:text="return"
+        android:textColor="#FFE0B2"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

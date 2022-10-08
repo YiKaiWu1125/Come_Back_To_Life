@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/button_shape_clear"
+                >
+
+                <ImageView
+                    android:id="@+id/img_receive_sticks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    tools:srcCompat="@drawable/button_shape" />
+
+                <TextView
+                    android:id="@+id/time_receive_sticks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="time:time"
+                    android:textSize="12sp"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/battery_receive_sticks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/send_battery_background"
+                android:padding="5dp"
+                android:text="100%"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -27,36 +27,36 @@ class ChoicepicActivity : AppCompatActivity() {
         btn_come_back.setOnClickListener{
             val intent = Intent()
             intent.putExtra(NUMBER, -1)
-            intent.setClass(baseContext, ChatroomActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            finish()
         }
         view_pic_print = findViewById(R.id.img_morning)
         view_pic_print.setOnClickListener{
             val intent = Intent()
             intent.putExtra(NUMBER, 0)
-            intent.setClass(baseContext, ChatroomActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            finish()
         }
         view_pic_print = findViewById(R.id.img_afternoon)
         view_pic_print.setOnClickListener{
             val intent = Intent()
             intent.putExtra(NUMBER, 1)
-            intent.setClass(baseContext, ChatroomActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            finish()
         }
         view_pic_print = findViewById(R.id.img_night)
         view_pic_print.setOnClickListener{
             val intent = Intent()
             intent.putExtra(NUMBER, 2)
-            intent.setClass(baseContext, ChatroomActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            finish()
         }
         view_pic_print = findViewById(R.id.img_oh)
         view_pic_print.setOnClickListener{
             val intent = Intent()
             intent.putExtra(NUMBER, 3)
-            intent.setClass(baseContext, ChatroomActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            finish()
         }
 
     }

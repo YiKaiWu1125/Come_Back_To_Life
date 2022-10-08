@@ -20,12 +20,11 @@ import kotlin.math.sign
 class MainActivity : AppCompatActivity() {
     private lateinit var btn_enter_chatroom : Button
     private lateinit var auth : FirebaseAuth
-    private lateinit var et_UserName : EditText
-    private lateinit var mDbRef: DatabaseReference
-    private var limit = 30.0
+    private var limit = 30.0 //如需demo請自行修改進入的電量條件值
     companion object {
         val USERNAME: String = "USERNAME"
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        et_UserName = findViewById(R.id.input_username)
+
         btn_enter_chatroom = findViewById(R.id.enter_chatroom)
         btn_enter_chatroom.setOnClickListener({enterChatroom()})
 
@@ -42,10 +41,9 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        if (currentUser != null){
-            et_UserName.setText(currentUser.displayName)
+        if(currentUser == null){
+            signInAnonymously()
         }
-
     }
     private fun signInAnonymously() {
         // [START signin_anonymously]
@@ -53,11 +51,12 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    //Log.d(TAG, "signInAnonymously:success")
+                    Log.d("CBTL", "signInAnonymously:success")
                     val user = auth.currentUser
+
                 } else {
                     // If sign in fails, display a message to the user.
-                    //Log.w(TAG, "signInAnonymously:failure", task.exception)
+
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                 }
@@ -73,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             toast( this.getString(R.string.battery_too_high) )
         }
         else{
+
             startChatRoom()
         }
     }
@@ -92,22 +92,18 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText( this, "not loggin", Toast.LENGTH_SHORT).show()
             return
         }
-        // Toast.makeText( this, auth.currentUser!!.displayName, Toast.LENGTH_SHORT).show()
         val intent = Intent()
 
-        val str_username: String = et_UserName.text.toString()
-        intent.putExtra(USERNAME,  str_username)
+
         intent.setClass(this, ChatroomActivity::class.java)
         startActivity(intent)
     }
-    public fun toast(msg: String) {
+    fun toast(msg: String) {
         val context: Context = applicationContext
         val text: CharSequence = msg
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(context, text, duration)
         toast.show()
     }
-    private fun addUserToDatabase(uid: String){
-        mDbRef = FirebaseDatabase.getInstance().getReference()
-    }
+
 }
